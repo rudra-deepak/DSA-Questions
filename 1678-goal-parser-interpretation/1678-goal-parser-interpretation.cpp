@@ -4,27 +4,22 @@ class Solution {
 public:
     std::string interpret(std::string command) {
         std::string result = "";
-        int i = 0;
-        int n = command.length();
         
-        while (i < n) {
-            // Case 1: Character is 'G'
+        for (int i = 0; i < command.length(); ++i) {
             if (command[i] == 'G') {
                 result += 'G';
-                i += 1;
             } 
-            // Case 2: Sequence is "()"
-            else if (command[i + 1] == ')') {
-                result += 'o';
-                i += 2;
-            } 
-            // Case 3: Sequence is "(al)"
-            else {
-                result += "al";
-                i += 4;
+            else if (command[i] == '(') {
+                // Check the next character to decide the replacement
+                if (command[i + 1] == ')') {
+                    result += 'o';
+                    i++; // Skip the closing parenthesis
+                } else {
+                    result += "al";
+                    i += 3; // Skip 'a', 'l', and ')'
+                }
             }
         }
-        
         return result;
     }
 };
