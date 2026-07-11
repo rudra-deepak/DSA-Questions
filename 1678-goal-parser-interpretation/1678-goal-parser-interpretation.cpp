@@ -10,7 +10,7 @@ public:
                 result += 'G';
             } 
             else if (command[i] == '(') {
-              //Check the next character to decide the replacement...
+             ////Check the next character to decide the replacement...
                 if (command[i + 1] == ')') {
                     result += 'o';
                     i++; // Skip the closing parenthesis
